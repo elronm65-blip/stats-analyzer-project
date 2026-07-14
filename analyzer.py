@@ -14,6 +14,13 @@ def normal_large(data):
     return [(row ,'large' if int(row[5]) >= 5000 else 'normal') for row in data]
 
 
+def ip_count_inquiries(data):
+    counts = {}
+    for row in data:
+        ip =row[1]
+        counts[ip] = counts.get(ip, 0) + 1
+    return counts
+
 
 data = reader.read_csv_to_list("network_traffic.log")
 print(normal_large(data))
